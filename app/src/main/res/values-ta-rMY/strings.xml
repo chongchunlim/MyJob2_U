@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="guidelines">"எங்களை பற்றி"</string>
+    <string name="bookmarks">"புக்மார்க்குகள்"</string>
+    <string name="login">"உள் நுழை"</string>
+    <string name="logout">"ெளியேறு"</string>
+    <string name="tabLabel1">"வேலை"</string>
+    <string name="tabLabel2">"பிந்தைய வேலை"</string>
+    <string name="tabLabel3">"வேலை வரலாற"ு</string>
+    <string name="profile">"சுயவிவர"</string>
+    <string name="exitPrompt">Press again to exit</string>
+    <string name="register">"உள் நுழை"</string>
+</resources>

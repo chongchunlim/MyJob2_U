@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="guidelines">garis panduan</string>
+    <string name="bookmarks">penanda buku</string>
+    <string name="login">log masuk</string>
+    <string name="logout">log keluar</string>
+    <string name="tabLabel1">butiran kerja</string>
+    <string name="tabLabel2">kerja post</string>
+    <string name="tabLabel3">sejarah kerja</string>
+    <string name="profile">profil</string>
+    <string name="exitPrompt">Tekan sekali lagi untuk keluar</string>
+    <string name="register">daftar</string>
+</resources>

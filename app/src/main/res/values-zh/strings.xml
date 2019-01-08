@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="guidelines">关于</string>
+    <string name="login">登入</string>
+    <string name="logout">登出</string>
+    <string name="profile">个人资料</string>
+    <string name="bookmarks">书签</string>
+    <string name="tabLabel1">工作细节</string>
+    <string name="tabLabel2">发布工作</string>
+    <string name="tabLabel3">工作经历</string>
+    <string name="exitPrompt">再次点击便可退出</string>
+    <string name="register">登记</string>
+</resources>

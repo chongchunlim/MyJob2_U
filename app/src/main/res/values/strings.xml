@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name" translatable="false">MyJob2U</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="nonMemberLogin_jobhistory" translatable="false">login or register to view the Job History</string>
+    <string name="register">register</string>
+    <string name="password" translatable="false">password</string>
+    <string name="email" translatable="false">email</string>
+    <string name="tabLabel1">Job Details</string>
+    <string name="tabLabel2">Post Job</string>
+    <string name="tabLabel3">Job History</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="profile">Profile</string>
+    <string name="guidelines">Guideline</string>
+    <string name="guidelines1" translatable="false">First : </string>
+    <string name="guidelines2" translatable="false">Second : </string>
+    <string name="guidelines3" translatable="false">Third :</string>
+    <string name="bookmarks">Bookmarks</string>
+    <string name="nonMemberLogin_postjob" translatable="false">Login or register only can view or post your job details.</string>
+    <string name="exitPrompt">Press again to exit</string>
+    <string name="register_user_page" translatable="false"> Sign Up </string>
+    <array name="arrayAge">
+        <item>under 10</item>
+        <item>10 to 20</item>
+        <item>20 to 30</item>
+        <item>30 to 40</item>
+        <item>40 to 50</item>
+        <item>50 to 60</item>
+    </array>
+    <array name="arrayQualification">
+        <item>Not graduated from secondary school</item>
+        <item>Secondary school graduate</item>
+        <item>Diploma</item>
+        <item>Bachelors degree</item>
+        <item>Masters</item>
+        <item>Doctorate</item>
+    </array>
+    <string name="signupstring" translatable="false">Don\'t have an account?<u>sign up here</u>
+</string>
+</resources>
