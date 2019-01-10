@@ -1,6 +1,8 @@
 package com.myjob2u.myjob2u;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +24,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+
+
 public class Login extends AppCompatActivity {
 
     EditText loginUsername,loginPassword;
@@ -29,6 +33,9 @@ public class Login extends AppCompatActivity {
     DatabaseReference databaseUser;
     List<User> userList;
     TextView signupLink;
+
+    public SharedPreferences loginSession ;
+    public SharedPreferences.Editor loginEdit ;
 
 
     @Override
@@ -61,6 +68,9 @@ public class Login extends AppCompatActivity {
                 loginUser();
             }
         });
+
+        loginSession = getApplicationContext().getSharedPreferences("loginSession", MODE_PRIVATE);
+        loginEdit = loginSession.edit();
 
     }
 
@@ -101,7 +111,18 @@ public class Login extends AppCompatActivity {
             if(loginUsername.getText().toString().equals(userList.get(i).username)&&loginPassword.getText().toString().equals(userList.get(i).password))
             {
                 Toast.makeText(this,"welcome, "+userList.get(i).username,Toast.LENGTH_LONG).show();
-            }else
+                loginEdit.putString("username",loginUsername.getText().toString());
+                loginEdit.commit();
+
+                finish();
+                break;
+
+                //Intent intent = new Intent(this,MainActivity.class);
+               // startActivity(intent);
+
+            }
+
+            if(i==userList.size()-1)
                 Toast.makeText(this,"[[[ incorrect username or password. please re-enter ]]]",Toast.LENGTH_LONG).show();
         }
     }

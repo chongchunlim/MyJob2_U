@@ -99,5 +99,7 @@ public class Registeruser extends AppCompatActivity {
 
         Toast.makeText(this,"user successfully registered",Toast.LENGTH_LONG).show();
 
+        finish();
+
     }
 }

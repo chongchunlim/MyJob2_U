@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String KEY_LANG = "key_lang"; // preference key
     private Context context;
 
+
+    public SharedPreferences loginSession;
+    public SharedPreferences.Editor loginEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
                               //  break;
 
                             case R.id.login:
+                                fragmentJ.onResume();
+                                fragmentP.onResume();
+                                fragmentH.onResume();
                                 launchLogin();
                                 break;
 
@@ -133,11 +140,63 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.guideline:
                                 launchguideline();
                                 break;
+
+                            case R.id.logout:
+                                SharedPreferences loginSession = getSharedPreferences("loginSession", MODE_PRIVATE);
+                                SharedPreferences.Editor loginEdit = loginSession.edit();
+
+                                loginEdit.remove("username");
+                                loginEdit.commit();
+                                 NavigationView navigationView = findViewById(R.id.nav_view);
+                                View headerView = navigationView.getHeaderView(0);
+                                TextView navUsername = (TextView) headerView.findViewById(R.id.navUsername);
+                                String username = loginSession.getString("username","Anonymous");
+                                 navUsername.setText(username);
+                                fragmentJ.onResume();
+                                fragmentP.onResume();
+                                fragmentH.onResume();
+                                Toast.makeText(getApplicationContext(),"you have logged out",Toast.LENGTH_LONG).show();
+
+                                break;
                         }
                         return true;
                     }
                 });
+
+
+
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.navUsername);
+
+//show if user logged in
+
+            loginSession = getApplicationContext().getSharedPreferences("loginSession", MODE_PRIVATE);
+
+
+            String username = loginSession.getString("username","Anonymous");
+            navUsername.setText(username);
+
+
+
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        /////to resume after login
+        SharedPreferences loginSession = getSharedPreferences("loginSession", MODE_PRIVATE);
+        SharedPreferences.Editor loginEdit = loginSession.edit();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.navUsername);
+        String username = loginSession.getString("username","Anonymous");
+        navUsername.setText(username);
+
+    }
+
 
     private void launchLogin() {
         Intent intent = new Intent(this, Login.class);
@@ -181,16 +240,19 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.JobDetails:
                     fm.beginTransaction().hide(active).show(fragmentJ).commit();
+                    fragmentJ.onResume();
                     active = fragmentJ;
                     return true;
 
                 case R.id.PostJob:
                     fm.beginTransaction().hide(active).show(fragmentP).commit();
+                    fragmentP.onResume();
                     active = fragmentP;
                     return true;
 
                 case R.id.JobHistory:
                     fm.beginTransaction().hide(active).show(fragmentH).commit();
+                    fragmentH.onResume();
                     active = fragmentH;
                     return true;
             }

@@ -10,6 +10,11 @@
     <string name="register">register</string>
     <string name="password" translatable="false">password</string>
     <string name="email" translatable="false">email</string>
+    <string name="job_desc" translatable="false">Job Description :</string>
+    <string name="job_tittle" translatable="false">Job Tittle :</string>
+    <string name="min_salary" translatable="false">Minimum Salary :</string>
+    <string name="post" translatable="false">Post Job</string>
+    <string name="qualification" translatable="false">Qualification :</string>
     <string name="tabLabel1">Job Details</string>
     <string name="tabLabel2">Post Job</string>
     <string name="tabLabel3">Job History</string>
