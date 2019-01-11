@@ -123,9 +123,6 @@ public class MainActivity extends AppCompatActivity {
                               //  break;
 
                             case R.id.login:
-                                fragmentJ.onResume();
-                                fragmentP.onResume();
-                                fragmentH.onResume();
                                 launchLogin();
                                 break;
 
@@ -149,12 +146,10 @@ public class MainActivity extends AppCompatActivity {
                                 loginEdit.commit();
                                  NavigationView navigationView = findViewById(R.id.nav_view);
                                 View headerView = navigationView.getHeaderView(0);
-                                TextView navUsername = (TextView) headerView.findViewById(R.id.navUsername);
+                                TextView navUsername = headerView.findViewById(R.id.navUsername);
                                 String username = loginSession.getString("username","Anonymous");
                                  navUsername.setText(username);
-                                fragmentJ.onResume();
-                                fragmentP.onResume();
-                                fragmentH.onResume();
+
                                 Toast.makeText(getApplicationContext(),"you have logged out",Toast.LENGTH_LONG).show();
 
                                 break;
@@ -167,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         View headerView = navigationView.getHeaderView(0);
-        TextView navUsername = (TextView) headerView.findViewById(R.id.navUsername);
+        TextView navUsername = headerView.findViewById(R.id.navUsername);
 
 //show if user logged in
 
@@ -191,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
-        TextView navUsername = (TextView) headerView.findViewById(R.id.navUsername);
+        TextView navUsername = headerView.findViewById(R.id.navUsername);
         String username = loginSession.getString("username","Anonymous");
         navUsername.setText(username);
 
@@ -224,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -239,19 +234,19 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.JobDetails:
-                    fm.beginTransaction().hide(active).show(fragmentJ).commit();
+                    fm.beginTransaction().hide(active).detach(active).attach(fragmentJ).show(fragmentJ).commit();
                     fragmentJ.onResume();
                     active = fragmentJ;
                     return true;
 
                 case R.id.PostJob:
-                    fm.beginTransaction().hide(active).show(fragmentP).commit();
+                    fm.beginTransaction().hide(active).detach(active).attach(fragmentP).show(fragmentP).commit();
                     fragmentP.onResume();
                     active = fragmentP;
                     return true;
 
                 case R.id.JobHistory:
-                    fm.beginTransaction().hide(active).show(fragmentH).commit();
+                    fm.beginTransaction().hide(active).detach(active).attach(fragmentH).show(fragmentH).commit();
                     fragmentH.onResume();
                     active = fragmentH;
                     return true;

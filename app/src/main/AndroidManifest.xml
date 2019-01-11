@@ -33,7 +33,6 @@
         <activity android:name=".NewJob" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".TakeJob" />
-        <activity android:name=".BookmarkJob"></activity>
     </application>
 
 </manifest>

@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,13 +25,14 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class JobHistoryFragment extends Fragment {
 
-    RecyclerView recyclerView;
-    JobAdapter jobAdapter;
-    List<PostNewJob> postNewJobList;
+
+
     DatabaseReference databaseUser;
     View RootView;
     SharedPreferences loginSession;
     String username;
+    TextView bk1,bk2,bk3,bk4,bk5,bk6,bk7,bk8,bk9,bk10;
+    List<String> bookmarkJobsList;
 
     public JobHistoryFragment() {
         // Required empty public constructor
@@ -41,27 +44,30 @@ public class JobHistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        databaseUser = FirebaseDatabase.getInstance().getReference("jobdetails");
-        RootView = inflater.inflate(R.layout.fragment_jobdetails, container, false);
+        databaseUser = FirebaseDatabase.getInstance().getReference("takenjobs");
+        RootView = inflater.inflate(R.layout.fragment_jobhistory, container, false);
+
+        bookmarkJobsList =  new ArrayList<>();
 
         loginSession = getActivity().getApplicationContext().getSharedPreferences("loginSession", MODE_PRIVATE);
 
 
         username = loginSession.getString("username","Anonymous");
 
+        bk1 = RootView.findViewById(R.id.bk1);
+        bk2 = RootView.findViewById(R.id.bk2);
+        bk3 = RootView.findViewById(R.id.bk3);
+        bk4 = RootView.findViewById(R.id.bk4);
+        bk5 = RootView.findViewById(R.id.bk5);
+        bk6 = RootView.findViewById(R.id.bk6);
+        bk7 = RootView.findViewById(R.id.bk7);
+        bk8 = RootView.findViewById(R.id.bk8);
+        bk9 = RootView.findViewById(R.id.bk9);
+        bk10 = RootView.findViewById(R.id.bk10);
 
-        recyclerView= RootView.findViewById(R.id.recyclerViewDetails);
 
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+        //bk5.setText("fuckfuck");
 
-
-        postNewJobList = new ArrayList<>();
-
-        //postNewJobList.add(new PostNewJob("reatrd","Stsas","Ssasatitle","Strinsasasag title", "String title"));
-
-        JobAdapter jobAdapter =  new JobAdapter(getActivity().getApplicationContext(),postNewJobList);
-        recyclerView.setAdapter(jobAdapter);
 
         return RootView;
     }
@@ -69,40 +75,65 @@ public class JobHistoryFragment extends Fragment {
 
 
 
-    @Override
-    public void onStart() {
+     @Override
+   public void onStart() {
         super.onStart();
 
-        databaseUser.addValueEventListener(new ValueEventListener() {
+       databaseUser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                postNewJobList.clear();
+                bookmarkJobsList.clear();
+
 
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
 
-                    PostNewJob postNewJob = userSnapshot.getValue(PostNewJob.class);
+                    BookmarkTakeJob bookmarkJob = userSnapshot.getValue(BookmarkTakeJob.class);
 
-                    if(postNewJob.getPoster().equals(username))
-                        postNewJobList.add(postNewJob);
+
+                    if (username.equals(bookmarkJob.getUsername()))
+                        bookmarkJobsList.add(bookmarkJob.getJobTitle());
 
                 }
 
-                if (loginSession.getString("username","Anonymous").equals("Anonymous"))
-                    postNewJobList.clear();
+                if (username.equals("Anonymous"))
+                    bookmarkJobsList.clear();
 
-                JobAdapter jobAdapter =  new JobAdapter(getActivity().getApplicationContext(),postNewJobList);
-                recyclerView.setAdapter(jobAdapter);
+                if (bookmarkJobsList.size()!=0) {
+                    if (bookmarkJobsList.size() >= 1)
+                        bk1.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 1));
+                    if (bookmarkJobsList.size() >= 2)
+                        bk2.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 2));
+                    if (bookmarkJobsList.size() >= 3)
+                        bk3.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 3));
+                    if (bookmarkJobsList.size() >= 4)
+                        bk4.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 4));
+                    if (bookmarkJobsList.size() >= 5)
+                        bk5.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 5));
+                    if (bookmarkJobsList.size() >= 6)
+                        bk6.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 6));
+                    if (bookmarkJobsList.size() >= 7)
+                        bk7.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 7));
+                    if (bookmarkJobsList.size() >= 8)
+                        bk8.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 8));
+                    if (bookmarkJobsList.size() >= 9)
+                        bk9.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 9));
+                    if (bookmarkJobsList.size() >= 10)
+                        bk10.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 10));
+
+                }else
+                    Toast.makeText(getActivity(),"you have no job history ",Toast.LENGTH_LONG).show();
 
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+
+
     }
-
 
     @Override
     public void onResume() {
@@ -112,30 +143,58 @@ public class JobHistoryFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                postNewJobList.clear();
+                bookmarkJobsList.clear();
 
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
 
-                    PostNewJob postNewJob = userSnapshot.getValue(PostNewJob.class);
+                    BookmarkTakeJob bookmarkJob = userSnapshot.getValue(BookmarkTakeJob.class);
 
-                    if(postNewJob.getPoster().equals(username))
-                        postNewJobList.add(postNewJob);
+
+                    if (username.equals(bookmarkJob.getUsername()))
+                        bookmarkJobsList.add(bookmarkJob.getJobTitle());
 
                 }
 
-                if (loginSession.getString("username","Anonymous").equals("Anonymous"))
-                    postNewJobList.clear();
+                if (username.equals("Anonymous"))
+                    bookmarkJobsList.clear();
 
-                JobAdapter jobAdapter =  new JobAdapter(getActivity().getApplicationContext(),postNewJobList);
-                recyclerView.setAdapter(jobAdapter);
+                if (bookmarkJobsList.size()!=0) {
+                    if (bookmarkJobsList.size() >= 1)
+                        bk1.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 1));
+                    if (bookmarkJobsList.size() >= 2)
+                        bk2.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 2));
+                    if (bookmarkJobsList.size() >= 3)
+                        bk3.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 3));
+                    if (bookmarkJobsList.size() >= 4)
+                        bk4.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 4));
+                    if (bookmarkJobsList.size() >= 5)
+                        bk5.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 5));
+                    if (bookmarkJobsList.size() >= 6)
+                        bk6.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 6));
+                    if (bookmarkJobsList.size() >= 7)
+                        bk7.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 7));
+                    if (bookmarkJobsList.size() >= 8)
+                        bk8.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 8));
+                    if (bookmarkJobsList.size() >= 9)
+                        bk9.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 9));
+                    if (bookmarkJobsList.size() >= 10)
+                        bk10.setText(bookmarkJobsList.get(bookmarkJobsList.size() - 10));
+
+                }else
+                    Toast.makeText(getActivity(),"you have no job history ",Toast.LENGTH_LONG).show();
 
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
 
-    }
+
+}
+
+
+
+
 }

@@ -25,7 +25,7 @@
     <string name="guidelines1" translatable="false">First : </string>
     <string name="guidelines2" translatable="false">Second : </string>
     <string name="guidelines3" translatable="false">Third :</string>
-    <string name="bookmarks">Bookmarks</string>
+    <string name="bookmarks">Take job</string>
     <string name="nonMemberLogin_postjob" translatable="false">Login or register only can view or post your job details.</string>
     <string name="exitPrompt">Press again to exit</string>
     <string name="register_user_page" translatable="false"> Sign Up </string>

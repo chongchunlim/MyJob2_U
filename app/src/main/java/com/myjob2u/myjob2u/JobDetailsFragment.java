@@ -43,14 +43,15 @@ public class JobDetailsFragment extends Fragment {
         databaseUser = FirebaseDatabase.getInstance().getReference("jobdetails");
          RootView = inflater.inflate(R.layout.fragment_jobdetails, container, false);
 
-        btnTakeJob = RootView.findViewById(R.id.btnTakeJob);
+       /* btnTakeJob = RootView.findViewById(R.id.btnTakeJob);
         btnTakeJob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent newComplaint = new Intent(JobDetailsFragment.this.getActivity(), TakeJob.class);
                 startActivity(newComplaint);
             }
-        });
+        });*/
+
 
         recyclerView= RootView.findViewById(R.id.recyclerViewDetails);
 
