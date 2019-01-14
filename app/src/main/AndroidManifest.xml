@@ -30,7 +30,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".BookmarksActivity" />
         <activity android:name=".GuidelinesActivity" />
-        <activity android:name=".NewJob" />
+        <activity android:name=".NewJob" android:label="@string/post"/>
         <activity android:name=".ProfileActivity" />
         <activity android:name=".TakeJob" />
     </application>

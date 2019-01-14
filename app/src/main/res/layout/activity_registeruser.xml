@@ -25,7 +25,7 @@
 
     <EditText
         android:id="@+id/inputUsername"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -41,7 +41,7 @@
 
     <EditText
         android:id="@+id/inputPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -58,7 +58,7 @@
 
     <EditText
         android:id="@+id/inputEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -75,7 +75,7 @@
 
     <EditText
         android:id="@+id/inputContactNumber"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -131,19 +131,18 @@
 
     <EditText
         android:id="@+id/inputAddress"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="47dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="Home Address"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/spinnerAge"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -163,7 +162,7 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="41dp"
+        android:layout_width="74dp"
         android:layout_height="37dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
